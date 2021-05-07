@@ -1,23 +1,54 @@
 <?php
 
-class Medico{
+class Medico
+{
+    //propriedade de class
+    private static $n_medicos = 0;
 
-    public $id_medico;
-    public $nome;
-    public $morada;
-    public $telefone;
-    public $id_servico;
-    public $id_especialidade;
+    //propriedades de instancia
+    private $id_medico;
+    private $nome;
+    private $morada;
+    private $telefone;
+    private $id_servico;
+    private $id_especialidade;
 
     public function __construct(string $batatas, string $morada, string $telefone)
     {
-        //$this->id_medico;
         $this->nome = $batatas;
         $this->morada = $morada;
         $this->telefone = $telefone;
-        //$this->id_servico;
-        //$this->id_especialidade;
+        self::$n_medicos++;
     }
+
+    //metodo de instancia
+    public function getNome(){
+        return $this->nome;
+    }
+
+    //metodo de instancia
+    public function getMorada(){
+        return $this->morada;
+    }
+
+    //metodo de instancia
+    public function getTelefone(){
+        return $this->telefone;
+    }
+
+    //metodo de instancia
+    public function setNome(string $nome): void
+    {
+        if(strlen($nome) >= 2){
+            $this->nome = $nome;
+        }
+    }
+
+    //metodo de class
+    public static function getNMedicos(){
+        return self::$n_medicos;
+    }
+
 }
 
 ?>
